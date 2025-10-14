@@ -1,6 +1,6 @@
-import React from 'react';
-import { staffMembers } from "./data/mods.js";
-import { useScrollReveal } from '../hooks/aparicion.js';
+import React, { useState, useEffect } from 'react';
+import { staffMembers } from "./data/mods"; 
+import { useScrollReveal } from '../hooks/aparicion'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css'; 
@@ -8,51 +8,68 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
 export default function StaffCarousel() {
- const [contentRef, isVisible] = useScrollReveal({ threshold: 0.1 });
+    const [contentRef, isVisible] = useScrollReveal({ threshold: 0.1 });
+    const [isPausedByUser, setIsPausedByUser] = useState(false); 
+    const [swiperInstance, setSwiperInstance] = useState(null); 
 
- const transitionClasses = `transition-all duration-1000 ease-out ${
-  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
- }`;
-
- const swiperParams = {
-
-  modules: [Autoplay, Pagination],
-    pagination: {
-        clickable: true,
-    },
+    const transitionClasses = `transition-all duration-1000 ease-out ${
+     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+    }`;
     
-  autoplay: {
-    delay: 1500,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  },
-    
-  loop: true,
-  spaceBetween: 24,
-  speed: 800,
-  slidesPerView: 1,
-  slidesPerGroup: 1,
-  centeredSlides: true, 
+    const handleCardTouch = (isTouchStart) => {
+        setIsPausedByUser(isTouchStart);
+    };
 
-    breakpoints: {
-        640: {
-            slidesPerView: 2,
-            slidesPerGroup: 2,
-            centeredSlides: false,
+    useEffect(() => {
+        if (swiperInstance && swiperInstance.autoplay) {
+            if (isPausedByUser) {
+                swiperInstance.autoplay.pause();
+            } else {
+                swiperInstance.autoplay.resume();
+            }
+        }
+    }, [isPausedByUser, swiperInstance]);
+
+    const swiperParams = {
+        modules: [Autoplay, Pagination],
+        pagination: {
+            clickable: true,
         },
-
-        1024: {
-            slidesPerView: 4,     
-            slidesPerGroup: 4,
-            centeredSlides: false,
+        
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
         },
-    },
- };
+        
+        loop: true,
+        loopedSlides: 4, 
+        spaceBetween: 24,
+        speed: 800,
+        
+        slidesPerView: 1, 
+        slidesPerGroup: 1, 
+        centeredSlides: false,
+        
+        breakpoints: {
+            640: {
+                slidesPerView: 2,
+                slidesPerGroup: 1, 
+                centeredSlides: false,
+            },
 
- return (
-    <section id="staff" className="py-7 bg-gray-950 text-white font-[Poppins]">
+            1024: {
+                slidesPerView: 4,     
+                slidesPerGroup: 1, 
+                centeredSlides: false,
+            },
+        },
+    };
 
-        <div className="container mx-auto max-w-6xl px-6">
+    return (
+        <section id="staff" className="py-7 bg-gray-950 text-white font-[Poppins]">
+
+            <div className="container mx-auto max-w-6xl px-6">
 
                 <h2 className={`text-4xl font-bold text-center mb-12 text-cyan-400 ${transitionClasses}`} style={{ transitionDelay: '0ms' }}>
                     Conoce al Staff
@@ -60,35 +77,33 @@ export default function StaffCarousel() {
 
                 <div ref={contentRef} className="w-full">
                     
-                    <Swiper {...swiperParams} className="w-full h-auto relative pb-10">
-                    
+                    <Swiper {...swiperParams} className="w-full h-auto relative pb-10" onSwiper={setSwiperInstance}>
                         {staffMembers.map((member, index) => (
                             
-                            <SwiperSlide key={index} className="w-full" style={{ transitionDelay: `${100 * (index + 1)}ms` }}>{}
-
+                            <SwiperSlide key={index} className="w-full" style={{ transitionDelay: `${100 * (index + 1)}ms` }}>
                                 <div className="w-full flex justify-center">
-                                    
-                                    <StaffCard member={member} transitionClasses={transitionClasses} index={index}/>
+                                    <StaffCard  member={member} transitionClasses={transitionClasses} index={index} onCardTouch={handleCardTouch} 
+                                    />
                                 </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
-        </div>
-    </section>
- );
+            </div>
+        </section>
+    );
 }
 
-function StaffCard({ member, transitionClasses, index }) {
+function StaffCard({ member, transitionClasses, index, onCardTouch }) {
     return (
         <div className={`relative w-full max-w-xs h-96 rounded-xl overflow-hidden shadow-xl 
-         bg-slate-800 transition-all duration-500 cursor-pointer group 
-        ${transitionClasses}`} style={{ transitionDelay: `${100 * (index + 1)}ms` }}>
+           bg-slate-800 transition-all duration-500 cursor-pointer group 
+           ${transitionClasses}`} style={{ transitionDelay: `${100 * (index + 1)}ms` }}
+           onTouchStart={() => onCardTouch(true)} onTouchEnd={() => onCardTouch(false)} >
             
             <img src={member.image} alt={`Foto de ${member.name}`} className=" w-full h-full object-cover  transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-50"/>
             
             <div className="absolute inset-0 bg-black/50 transition-all duration-500 group-hover:bg-black/70"></div>
-            
             <div className="absolute inset-0 flex flex-col items-center p-4 text-center">
                 
                 <div className="w-full mb-4"> 
