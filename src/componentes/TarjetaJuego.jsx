@@ -7,7 +7,7 @@ export default function GameCard({ game }) {
     const [isMuted, setIsMuted] = useState(true); 
     const videoRef = useRef(null); 
     const timerRef = useRef(null);
-    const DELAY_MS = 2500; 
+    const DELAY_MS = 500; 
 
     useEffect(() => {
         return () => {
@@ -17,7 +17,7 @@ export default function GameCard({ game }) {
         };
     }, []);
 
-    const startInteraction = () => {
+    const handleMouseEnter = () => {
         setIsHovered(true);
 
         if (timerRef.current) clearTimeout(timerRef.current);
@@ -33,7 +33,7 @@ export default function GameCard({ game }) {
         }, DELAY_MS);
     };
 
-    const stopInteraction = () => {
+    const handleMouseLeave = () => {
         if (timerRef.current) clearTimeout(timerRef.current);
         
         timerRef.current = setTimeout(() => {
@@ -62,7 +62,8 @@ export default function GameCard({ game }) {
     return (
         <div className="relative w-full max-w-xs md:max-w-sm h-64 md:h-80 rounded-xl overflow-hidden shadow-xl 
             bg-slate-800 transition-all duration-500 cursor-pointer group"
-            onMouseEnter={startInteraction} onMouseLeave={stopInteraction} onTouchStart={startInteraction} onTouchEnd={stopInteraction}>
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}>
             
             <img src={game.image} alt={`Imagen de ${game.name}`} className={`w-full h-full object-cover 
                 transition-transform duration-500 ease-in-out 

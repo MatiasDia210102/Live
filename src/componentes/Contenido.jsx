@@ -21,7 +21,7 @@ export default function GamesSection() {
         autoplay: { delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: true },
         loop: true,
         spaceBetween: 24,
-        speed: 800,
+        speed: 2000,
         slidesPerView: 1,
         slidesPerGroup: 1,
         centeredSlides: true, 
