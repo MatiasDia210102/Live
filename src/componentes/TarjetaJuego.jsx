@@ -7,7 +7,7 @@ export default function GameCard({ game }) {
     const [isMuted, setIsMuted] = useState(true); 
     const videoRef = useRef(null); 
     const timerRef = useRef(null);
-    const DELAY_MS = 500; 
+    const DELAY_MS = 100; 
 
     useEffect(() => {
         return () => {

@@ -127,3 +127,60 @@ export const staffMembers = [
     description: "Solo viene a dejar buenas vibras y se va a matar gente.",
   },
 ];
+
+export const favMembers = [
+  { 
+    name: "Los Virreyes", 
+    role: "Es un papucho", 
+    image: "/Fotos/Staff/adrien.jpeg",
+    description: "Viene, te seduce y se va.",
+  },
+  { 
+    name: "Fernan", 
+    role: "El rey del Project Reality", 
+    image: "/Fotos/Staff/fernan.jpeg", 
+    description: "Este amigo lleva meses insistiendo con el Project, menuda paciencia jaja.",
+  },
+  { 
+    name: "Luna", 
+    role: "La perdida", 
+    image: "/Fotos/Staff/luna.jpeg", 
+    description: "Es Uruguaya.",
+  },
+   { 
+    name: "Rafa", 
+    role: "Roba kills", 
+    image: "/Fotos/Staff/rafa.jpeg", 
+    description: "Da igual si jugas Blood Strike o Among us, el siempre te saca las kills",
+  },
+  { 
+    name: "Reyleg", 
+    role: "El Nuevo", 
+    image: "/Fotos/Staff/reyleg.jpeg", 
+    description: "Llego a competir por el top 2 en Blood Strike con Panda.",
+  },
+   { 
+    name: "Panda", 
+    role: "MVP del Blood", 
+    image: "/Fotos/Staff/panda.jpeg", 
+    description: "Te mete un tiro en la nuca nada mas aparecer.",
+  },
+  { 
+    name: "Alequink", 
+    role: "La Leyenda", 
+    image: "/Fotos/Staff/alequink.jpeg", 
+    description: "Vino un dia y destrono al MVP del Blood como si nada.",
+  },
+  {
+    name: "Isa", 
+    role: "Te saluda y se va", 
+    image: "/Fotos/Staff/isa.jpeg", 
+    description: "No te miento, te saluda y se va jaja.",
+  },
+  {
+    name: "Mati",
+    role: "Ganador del Torneo de Blood",
+    image:"/Fotos/Staff/mati.jpeg",
+    description: "Yo no deberia estar aca pero es mi pagina asi que hago lo que se me canta",
+  },
+];
