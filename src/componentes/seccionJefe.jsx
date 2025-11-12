@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth} from './AuthContext.jsx';
 import { Navigate } from 'react-router-dom';
 
@@ -84,7 +84,7 @@ export default function PanelJefe() {
         }
     };
 
-    const cargarUsuarios = async () => {
+    const cargarUsuarios = useCallback(async () => {
         setCargandoUsuarios(true);
         setErrorCarga('');
 
@@ -96,7 +96,7 @@ export default function PanelJefe() {
         } finally {
             setCargandoUsuarios(false);
         }
-    };
+    }, [obtenerTodosLosUsuarios, user.userId, setCargandoUsuarios])
 
     useEffect(() => {
         if (isLoggedIn && role === ROLES.JEFE) {
