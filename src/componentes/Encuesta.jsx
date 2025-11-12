@@ -42,8 +42,12 @@ export default function FeedbackSection() {
     }
 
     return (
-        <section className="py-16 bg-slate-900 border-t border-cyan-500/20">
-            <div className="max-w-3xl mx-auto px-4">
+        <section className="relative py-16 border-cyan-500/20 overflow-hidden">
+ 
+            <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
+            <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+            <div className="max-w-3xl mx-auto px-4 relative z-10">
+
                 <h2 className="text-4xl font-bold text-cyan-500 mb-6 text-center drop-shadow-lg">
                     Ayúdanos a Mejorar
                 </h2>

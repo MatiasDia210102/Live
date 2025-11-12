@@ -56,7 +56,6 @@ export default function StaffCarousel() {
   
   return (
     <section id="staff" className="py-7 bg-gray-950 text-white font-[Poppins]">
-
       <div className="container mx-auto max-w-6xl px-6">
 
         <h2 className={`text-4xl font-bold text-center mb-12 text-cyan-400 ${transitionClasses}`} style={{ transitionDelay: '0ms' }}>

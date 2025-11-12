@@ -21,6 +21,9 @@ module.exports = {
         sans: ["Poppins", "sans-serif"],
         orbitron: ["Orbitron", "sans-serif"],
       },
+      screens: {
+        'navlg': '980px',
+      },
     },
   },
   plugins: [],

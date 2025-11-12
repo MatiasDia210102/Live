@@ -33,7 +33,7 @@ const itemVariants = {
 
 export default function MobileMenu({ navbarLinks, handleLinkClick }) {
     return (
-        <motion.ul variants={menuVariants} initial="hidden" animate="visible" exit="exit" className={`md:hidden absolute top-full left-0 w-full flex flex-col items-center bg-black/90 py-4 shadow-2xl rounded-b-xl 
+        <motion.ul variants={menuVariants} initial="hidden" animate="visible" exit="exit" className={`navlg:hidden absolute top-full left-0 w-full flex flex-col items-center bg-black/90 py-4 shadow-2xl rounded-b-xl 
                 text-white text-xl font-orbitron drop-shadow-lg`}>
 
             {navbarLinks.map((item) => (

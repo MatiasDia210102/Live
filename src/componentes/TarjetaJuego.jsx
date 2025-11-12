@@ -62,11 +62,9 @@ export default function GameCard({ game }) {
     return (
         <div className="relative w-full max-w-xs md:max-w-sm h-64 md:h-80 rounded-xl overflow-hidden shadow-xl 
             bg-slate-800 transition-all duration-500 cursor-pointer group"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}>
+            onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             
-            <img src={game.image} alt={`Imagen de ${game.name}`} className={`w-full h-full object-cover 
-                transition-transform duration-500 ease-in-out 
+            <img src={game.image} alt={`Imagen de ${game.name}`} className={`w-full h-full object-cover transition-transform duration-500 ease-in-out 
                 ${isHovered ? 'scale-110 opacity-30' : 'scale-100 opacity-100'}`}/>
             
             {isVideoPlaying && game.trailerUrl && (
@@ -78,9 +76,7 @@ export default function GameCard({ game }) {
                     <button onClick={toggleMute}
                         className="absolute bottom-1/4 right-2 p-2 bg-black/50 text-white rounded-full z-10 transition-colors hover:bg-black/70"
                         aria-label={isMuted ? "Activar sonido" : "Silenciar"}>
-                        {isMuted 
-                            ? <FaVolumeMute size={20} /> 
-                            : <FaVolumeUp size={20} />}
+                        {isMuted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
                     </button>
                 </div>
             )}
