@@ -11,12 +11,12 @@ const Colores = {
 };
 
 const streamLinks = [
-  { icon: FaInstagram, title: "Instagram", link: "https://www.instagram.com/matias_diaz05", color: "text-pink-500" },
-  { icon: FaTiktok, title: "TikTok", link: "https://www.tiktok.com/@matiasg_diaz", color: "text-gray-400" },
-  { icon: FaTwitch, title: "Twitch", link: "https://www.twitch.tv/tomatidecherry", color: "text-purple-500" },
-  { icon: FaKickstarter, title: "Kick", link: "https://kick.com/tomatidecherry", color: "text-green-400" },
-  { icon: FaEnvelope, title: "Email", link: "mailto:matiu210102dewilde@gmail.com", color: "text-cyan-400" },
-  { icon: FaWhatsapp, title: "WhatsApp", link: "https://wa.me/541131707740?text=Hola,%20vengo%20de%20tu%20página%20web", color: "text-green-400" },
+  { Icono: FaInstagram, title: "Instagram", link: "https://www.instagram.com/matias_diaz05", color: "text-pink-500" },
+  { Icono: FaTiktok, title: "TikTok", link: "https://www.tiktok.com/@matiasg_diaz", color: "text-gray-400" },
+  { Icono: FaTwitch, title: "Twitch", link: "https://www.twitch.tv/tomatidecherry", color: "text-purple-500" },
+  { Icono: FaKickstarter, title: "Kick", link: "https://kick.com/tomatidecherry", color: "text-green-400" },
+  { Icono: FaEnvelope, title: "Email", link: "mailto:matiu210102dewilde@gmail.com", color: "text-cyan-400" },
+  { Icono: FaWhatsapp, title: "WhatsApp", link: "https://wa.me/541131707740?text=Hola,%20vengo%20de%20tu%20página%20web", color: "text-green-400" },
 ];
 
 const links = [
@@ -70,7 +70,7 @@ export default function Footer() {
               {streamLinks.map((Social, index) => (
                 <a key={index} href={Social.link} target="_blank" rel="noopener noreferrer" 
                   className={`text-3xl text-white transition-colors duration-300 hover:scale-110 ${Colores[Social.title]}`}>
-                  <Social.icon />
+                  <Social.Icono />
                 </a>
               ))}
             </div>

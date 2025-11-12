@@ -98,6 +98,12 @@ export default function PanelJefe() {
         }
     };
 
+    useEffect(() => {
+        if (isLoggedIn && role === ROLES.JEFE) {
+            cargarUsuarios();
+        }
+    }, []);
+
     if (!isLoggedIn || role !== ROLES.JEFE) {
         return <Navigate to="/" replace />;
     }
