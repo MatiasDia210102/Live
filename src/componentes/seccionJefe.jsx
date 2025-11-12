@@ -102,7 +102,7 @@ export default function PanelJefe() {
         if (isLoggedIn && role === ROLES.JEFE) {
             cargarUsuarios();
         }
-    }, []);
+    }, [ROLES.JEFE, cargarUsuarios, isLoggedIn, role]);
 
     if (!isLoggedIn || role !== ROLES.JEFE) {
         return <Navigate to="/" replace />;
