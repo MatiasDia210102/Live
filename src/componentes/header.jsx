@@ -3,7 +3,7 @@ import { navbarLinks } from "./data/data.js";
 import { FaGamepad, FaBars, FaTimes, FaLock, FaUserCircle, FaCrown, FaSignOutAlt } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { useScrollPosition } from '../hooks/hookNavbar.js';
-import { motion, AnimatePresence } from 'framer-motion'; 
+import { AnimatePresence } from 'framer-motion'; 
 import MenuMovil from './MenuMovil.jsx'; 
 import { useAuth, ROLES } from './AuthContext.jsx'; 
 

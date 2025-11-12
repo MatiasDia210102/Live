@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth, ROLES } from './AuthContext.jsx';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useAuth} from './AuthContext.jsx';
+import { Navigate } from 'react-router-dom';
 
 const FilaUsuario = ({ usuario, asignarRol, nombreUsuarioActual, ROLES }) => {
     const [nuevoRol, setNuevoRol] = useState(usuario.role);
@@ -59,9 +59,8 @@ const FilaUsuario = ({ usuario, asignarRol, nombreUsuarioActual, ROLES }) => {
 
 export default function PanelJefe() {
     const { user, isLoggedIn, role, obtenerTodosLosUsuarios, actualizarRolUsuario, calendarioLives, actualizarCalendarioLives, ROLES } = useAuth();
-    const navigate = useNavigate();
     const [usuarios, setUsuarios] = useState([]);
-    const [cargandoUsuarios, setCargandoUsuarios] = useState(true);
+    const [setCargandoUsuarios] = useState(true);
     const [errorCarga, setErrorCarga] = useState('');
     const [mensajeCalendario, setMensajeCalendario] = useState('');
     const [cargandoGuardado, setCargandoGuardado] = useState(false);
@@ -98,12 +97,6 @@ export default function PanelJefe() {
             setCargandoUsuarios(false);
         }
     };
-
-    useEffect(() => {
-        if (role === ROLES.JEFE) { 
-            cargarUsuarios();
-        }
-    }, [role]);
 
     if (!isLoggedIn || role !== ROLES.JEFE) {
         return <Navigate to="/" replace />;

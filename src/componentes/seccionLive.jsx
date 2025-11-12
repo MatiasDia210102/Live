@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth, ROLES } from './AuthContext.jsx';
+import { useAuth } from './AuthContext.jsx';
 import { Navigate } from 'react-router-dom';
 import { FaSave } from 'react-icons/fa';
 
@@ -58,7 +58,7 @@ const LiveDayEditor = ({ dayData, onUpdate }) => {
 };
 
 export default function DashboardLive() {
-    const { user, isLoggedIn, role, calendarioLives, actualizarCalendarioLives, ROLES } = useAuth();
+    const { isLoggedIn, role, calendarioLives, actualizarCalendarioLives, ROLES } = useAuth();
     const [currentSchedule, setCurrentSchedule] = useState(calendarioLives || []);
     const [globalMessage, setGlobalMessage] = useState('');
 
