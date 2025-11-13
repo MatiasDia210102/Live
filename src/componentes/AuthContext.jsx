@@ -5,7 +5,8 @@ export const ROLES = {
     ESPECTADOR: 'espectador',
 };
 
-const API_URL = 'http://localhost:3001/api';
+const BASE_URL = 'http://localhost:3001';
+const API_URL = `${BASE_URL}/api`;
 
 const ContextoAuth = createContext();
 export const useAuth = () => useContext(ContextoAuth);
@@ -146,27 +147,32 @@ export const ProveedorAuth = ({ children }) => {
     };
 
     useEffect(() => {
-      const inicializar = async () => {
-      const token = localStorage.getItem('token');
-      const userStored = localStorage.getItem('user');
-      
-      if (token && userStored) {
-        try {
-          setUsuario(JSON.parse(userStored));
-          setEstaLogeado(true);
-        } catch (e) {
-          localStorage.clear();
-        }
-      }
-      
-      await fetchCalendario();
-      setCargando(false);
-    };
-    
-    inicializar();
-  }, []);
+        const inicializar = async () => {
+            const token = localStorage.getItem('token');
+            const userStored = localStorage.getItem('user');
+        
+            if (token && userStored) {
+                try {
+                    setUsuario(JSON.parse(userStored));
+                    setEstaLogeado(true);
+                } catch (e) {
+                    localStorage.clear();
+                }
+            }
+        
+            try { 
+                await fetchCalendario();
+            } catch (e) {
+                console.error("Fallo al obtener calendario al iniciar.", e);
+            }
+        
+            setCargando(false);
+        };
+   
+        inicializar();
+    }, []);
 
-    if (cargando) return null;
+   // if (cargando) return null;
 
     return (
         <ContextoAuth.Provider value={{ user: usuario, isLoggedIn: estaLogeado, role: usuario ? usuario.role : null, cargando,
