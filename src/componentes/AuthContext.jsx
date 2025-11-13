@@ -5,7 +5,8 @@ export const ROLES = {
     ESPECTADOR: 'espectador',
 };
 
-const API_URL = 'http://localhost:3001/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = `${BASE_URL || 'http://localhost:3001'}/api`;
 const ContextoAuth = createContext();
 export const useAuth = () => useContext(ContextoAuth);
 
