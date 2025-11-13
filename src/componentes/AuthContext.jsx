@@ -5,8 +5,7 @@ export const ROLES = {
     ESPECTADOR: 'espectador',
 };
 
-const BASE_URL = 'http://localhost:3001';
-const API_URL = `${BASE_URL}/api`;
+const API_URL = 'http://localhost:3001/api';
 
 const ContextoAuth = createContext();
 export const useAuth = () => useContext(ContextoAuth);
